@@ -4,9 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GUIUtil {
-
+    private static String imageFolder = "./img/";
     public static void setImageIcon(JButton b, String fileName, String tip) {
-        ImageIcon i = new ImageIcon("../../img/"+fileName);
+        ImageIcon i = new ImageIcon(imageFolder+fileName);
         b.setIcon(i);
         b.setPreferredSize(new Dimension(61, 81));
         b.setToolTipText(tip);
@@ -27,6 +27,12 @@ public class GUIUtil {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
         cp.show(p);
+    }
+
+    public static void setColor(Color color, JComponent... cs) {
+        for (JComponent c : cs) {
+            c.setForeground(color);
+        }
     }
 
     public static void useLNF() {
