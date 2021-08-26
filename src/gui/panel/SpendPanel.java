@@ -1,6 +1,7 @@
 package gui.panel;
 
 import gui.util.CircleProgressBar;
+import gui.util.ColorUtil;
 import gui.util.GUIUtil;
 
 import javax.swing.*;
@@ -32,9 +33,9 @@ public class SpendPanel extends JPanel {
         circleBar = new CircleProgressBar();
         circleBar.setBackgroundColor(Color.red);
 
-        GUIUtil.setColor(Color.gray, lMonthSpend, lTodaySpend, lAvgSpendPerDay, lMonthLeft, lDayAvgAvailable,
+        GUIUtil.setColor(ColorUtil.grayColor, lMonthSpend, lTodaySpend, lAvgSpendPerDay, lMonthLeft, lDayAvgAvailable,
                 lMonthLeftDay, vAvgSpendPerDay, vMonthAvailable, vDayAvgAvailable, vMonthLeftDay);
-        GUIUtil.setColor(Color.blue, vMonthSpend, vTodaySpend);
+        GUIUtil.setColor(ColorUtil.blueColor, vMonthSpend, vTodaySpend);
 
         vMonthSpend.setFont(new Font("微软雅黑", Font.BOLD, 23));
         vTodaySpend.setFont(new Font("微软雅黑", Font.BOLD, 23));

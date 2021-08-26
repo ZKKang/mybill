@@ -28,6 +28,9 @@ public class GUIUtil {
         f.setVisible(true);
         cp.show(p);
     }
+    public static void showPanel(JPanel p) {
+        showPanel(p,0.8);
+    }
 
     public static void setColor(Color color, JComponent... cs) {
         for (JComponent c : cs) {

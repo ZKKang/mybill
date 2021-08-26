@@ -1,6 +1,7 @@
 package gui.panel;
 
 import gui.model.CategoryComboBoxModel;
+import gui.util.ColorUtil;
 import gui.util.GUIUtil;
 import org.jdesktop.swingx.JXDatePicker;
 
@@ -30,8 +31,8 @@ public class RecordPanel extends JPanel {
 
 
     private RecordPanel(){
-        GUIUtil.setColor(Color.gray, lSpend,lCategory,lComment,lDate);
-        GUIUtil.setColor(Color.blue, bSubmit);
+        GUIUtil.setColor(ColorUtil.grayColor, lSpend,lCategory,lComment,lDate);
+        GUIUtil.setColor(ColorUtil.blueColor, bSubmit);
         JPanel pInput =new JPanel();
         JPanel pSubmit = new JPanel();
         int gap = 40;

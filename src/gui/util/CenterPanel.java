@@ -1,7 +1,5 @@
 package gui.util;
 
-import gui.panel.MainPanel;
-
 import javax.swing.*;
 import java.awt.*;
 
