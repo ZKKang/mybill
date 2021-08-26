@@ -4,7 +4,6 @@ import gui.util.ColorUtil;
 import gui.util.GUIUtil;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class BackUpPanel extends JPanel {
     static {
