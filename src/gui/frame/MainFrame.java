@@ -6,9 +6,7 @@ import gui.util.GUIUtil;
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
-    static {
-        GUIUtil.useLNF();
-    }
+
     public static MainFrame instance = new MainFrame();
 
     private MainFrame() {

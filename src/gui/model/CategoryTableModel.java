@@ -1,5 +1,8 @@
 package gui.model;
 
+import gui.entity.Category;
+import gui.service.CategoryService;
+
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 import java.util.ArrayList;
@@ -8,14 +11,11 @@ import java.util.List;
 public class CategoryTableModel  implements TableModel {
 
     String[] columnNames = new String[]{"分类名称","消费次数"};
-    List<String> cs = new ArrayList<>();
+    public List<Category> cs = new ArrayList<>();
 
     public CategoryTableModel() {
-        cs.add("餐饮");
-        cs.add("住宿");
-        cs.add("交通");
-        cs.add("话费");
-        cs.add("游戏");
+        CategoryService categoryService = new CategoryService();
+        cs = categoryService.list();
     }
 
     @Override
@@ -45,11 +45,12 @@ public class CategoryTableModel  implements TableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        Category category = cs.get(rowIndex);
         if(columnIndex == 0) {
-            return cs.get(rowIndex);
+            return category.getName();
         }
         if(columnIndex == 1) {
-            return 1;
+            return category.getRecordNumber();
         }
         return null;
     }

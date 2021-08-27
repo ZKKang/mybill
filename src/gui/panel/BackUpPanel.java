@@ -5,7 +5,7 @@ import gui.util.GUIUtil;
 
 import javax.swing.*;
 
-public class BackUpPanel extends JPanel {
+public class BackUpPanel extends WorkingPanel {
     static {
         GUIUtil.useLNF();
     }
@@ -21,5 +21,15 @@ public class BackUpPanel extends JPanel {
 
     public static void main(String[] args) {
         GUIUtil.showPanel(BackUpPanel.instance);
+    }
+
+    @Override
+    public void addListener() {
+
+    }
+
+    @Override
+    public void updateData() {
+
     }
 }

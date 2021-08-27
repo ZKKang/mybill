@@ -1,13 +1,16 @@
 package gui.panel;
 
+import gui.entity.Category;
+import gui.listener.CategoryListener;
 import gui.model.CategoryTableModel;
+import gui.service.CategoryService;
 import gui.util.ColorUtil;
 import gui.util.GUIUtil;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class CategoryPanel extends JPanel {
+public class CategoryPanel extends WorkingPanel {
     static {
         GUIUtil.useLNF();
     }
@@ -33,9 +36,36 @@ public class CategoryPanel extends JPanel {
         btnPanel.add(bEdit);
         btnPanel.add(bDelete);
         this.add(btnPanel,BorderLayout.SOUTH);
+        addListener();
     }
 
-    public static void main(String[] args) {
-        GUIUtil.showPanel(CategoryPanel.instance,0.8);
+
+    @Override
+    public void addListener() {
+        CategoryListener categoryListener = new CategoryListener();
+        bAdd.addActionListener(categoryListener);
+        bEdit.addActionListener(categoryListener);
+        bDelete.addActionListener(categoryListener);
+    }
+
+    @Override
+    public void updateData() {
+        ctm.cs = new CategoryService().list();
+        t.updateUI();
+        t.getSelectionModel().setSelectionInterval(0, 0);
+
+        if(0==ctm.cs.size()){
+            bEdit.setEnabled(false);
+            bDelete.setEnabled(false);
+        }
+        else{
+            bEdit.setEnabled(true);
+            bDelete.setEnabled(true);
+        }
+    }
+
+    public Category getSelectedCategory() {
+        int index = t.getSelectedRow();
+        return ctm.cs.get(index);
     }
 }

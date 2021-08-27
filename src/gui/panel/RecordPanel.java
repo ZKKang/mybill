@@ -1,5 +1,7 @@
 package gui.panel;
 
+import gui.entity.Category;
+import gui.listener.RecordListener;
 import gui.model.CategoryComboBoxModel;
 import gui.util.ColorUtil;
 import gui.util.GUIUtil;
@@ -9,7 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Date;
 
-public class RecordPanel extends JPanel {
+public class RecordPanel extends WorkingPanel {
     static {
         GUIUtil.useLNF();
     }
@@ -23,7 +25,7 @@ public class RecordPanel extends JPanel {
     public JTextField tfSpend = new JTextField("0");
     public CategoryComboBoxModel cbModel = new CategoryComboBoxModel();
 
-    public JComboBox<String> cbCategory = new JComboBox<>(cbModel);
+    public JComboBox<Category> cbCategory = new JComboBox<>(cbModel);
     public JTextField tfComment = new JTextField();
     public JXDatePicker datepick = new JXDatePicker(new Date());
 
@@ -53,6 +55,7 @@ public class RecordPanel extends JPanel {
         this.setLayout(new BorderLayout());
         this.add(pInput,BorderLayout.NORTH);
         this.add(pSubmit,BorderLayout.SOUTH);
+        addListener();
 
     }
 
@@ -61,4 +64,13 @@ public class RecordPanel extends JPanel {
     }
 
 
+    @Override
+    public void addListener() {
+        bSubmit.addActionListener(new RecordListener());
+    }
+
+    @Override
+    public void updateData() {
+
+    }
 }

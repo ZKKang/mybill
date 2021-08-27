@@ -7,7 +7,7 @@ import gui.util.GUIUtil;
 import javax.swing.*;
 import java.awt.*;
 
-public class SpendPanel extends JPanel {
+public class SpendPanel extends WorkingPanel {
     static {
         GUIUtil.useLNF();
     }
@@ -83,5 +83,15 @@ public class SpendPanel extends JPanel {
 
     public static void main(String[] args) {
         GUIUtil.showPanel(SpendPanel.instance,0.8);
+    }
+
+    @Override
+    public void addListener() {
+        
+    }
+
+    @Override
+    public void updateData() {
+
     }
 }

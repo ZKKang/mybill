@@ -6,7 +6,7 @@ import gui.util.GUIUtil;
 import javax.swing.*;
 import java.awt.*;
 
-public class ReportPanel extends JPanel {
+public class ReportPanel extends WorkingPanel {
     static {
         GUIUtil.useLNF();
     }
@@ -26,5 +26,15 @@ public class ReportPanel extends JPanel {
 
     public static void main(String[] args) {
         GUIUtil.showPanel(ReportPanel.instance);
+    }
+
+    @Override
+    public void addListener() {
+
+    }
+
+    @Override
+    public void updateData() {
+
     }
 }
