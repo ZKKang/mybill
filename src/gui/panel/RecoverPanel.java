@@ -1,5 +1,6 @@
 package gui.panel;
 
+import gui.listener.RecoverListener;
 import gui.util.ColorUtil;
 import gui.util.GUIUtil;
 
@@ -17,6 +18,7 @@ public class RecoverPanel extends WorkingPanel {
     private RecoverPanel(){
         GUIUtil.setColor(ColorUtil.blueColor,bBack);
         this.add(bBack);
+        addListener();
     }
 
     public static void main(String[] args) {
@@ -25,7 +27,7 @@ public class RecoverPanel extends WorkingPanel {
 
     @Override
     public void addListener() {
-
+        bBack.addActionListener(new RecoverListener());
     }
 
     @Override

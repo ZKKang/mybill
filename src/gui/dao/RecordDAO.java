@@ -194,7 +194,7 @@ public class RecordDAO {
 
     public List<Record> list(Date day) {
         List<Record> records = new ArrayList<Record>();
-        String sql = "select * from record where date =?";
+        String sql = "select * from record where data =?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
             ps.setDate(1, DateUtil.util2sql(day));
 
@@ -228,7 +228,7 @@ public class RecordDAO {
 
     public List<Record> list(Date start, Date end) {
         List<Record> records = new ArrayList<Record>();
-        String sql = "select * from record where date >=? and date <= ?";
+        String sql = "select * from record where data >=? and data <= ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
             ps.setDate(1, DateUtil.util2sql(start));
             ps.setDate(2, DateUtil.util2sql(end));

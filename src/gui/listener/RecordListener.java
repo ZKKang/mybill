@@ -5,6 +5,7 @@ import gui.panel.RecordPanel;
 import gui.service.RecordService;
 import gui.util.GUIUtil;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,6 +17,9 @@ public class RecordListener implements ActionListener {
         String spend = recordPanel.tfSpend.getText();
         if(GUIUtil.checkZero(recordPanel.tfSpend,"消费金额")){
             recordService.add(Integer.valueOf(spend),(Category) recordPanel.cbCategory.getSelectedItem(),recordPanel.tfComment.getText(),recordPanel.datepick.getDate());
+            JOptionPane.showMessageDialog(recordPanel,"记录成功");
+            recordPanel.tfSpend.setText("");
+            recordPanel.tfComment.setText("");
         }
     }
 }

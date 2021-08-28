@@ -1,5 +1,6 @@
 package gui.panel;
 
+import gui.listener.BackupListener;
 import gui.util.ColorUtil;
 import gui.util.GUIUtil;
 
@@ -17,6 +18,7 @@ public class BackUpPanel extends WorkingPanel {
     private BackUpPanel(){
         GUIUtil.setColor(ColorUtil.blueColor,bBack);
         this.add(bBack);
+        addListener();
     }
 
     public static void main(String[] args) {
@@ -25,7 +27,7 @@ public class BackUpPanel extends WorkingPanel {
 
     @Override
     public void addListener() {
-
+        bBack.addActionListener(new BackupListener());
     }
 
     @Override

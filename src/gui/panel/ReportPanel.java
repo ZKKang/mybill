@@ -1,10 +1,13 @@
 package gui.panel;
 
+import gui.entity.Record;
+import gui.service.ReportService;
 import gui.util.ChartUtil;
 import gui.util.GUIUtil;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class ReportPanel extends WorkingPanel {
     static {
@@ -17,7 +20,9 @@ public class ReportPanel extends WorkingPanel {
     public JLabel l = new JLabel();
     private ReportPanel() {
         this.setLayout(new BorderLayout());
-        Image image = ChartUtil.getImage(350,230);
+        List<Record> rs = new ReportService().listThisMonthRecords();
+
+        Image image = ChartUtil.getImage(rs,350,230);
         ImageIcon icon = new ImageIcon(image);
         l.setIcon(icon);
         this.add(l);

@@ -1,5 +1,7 @@
 package gui.panel;
 
+import gui.page.SpendPage;
+import gui.service.SpendService;
 import gui.util.CircleProgressBar;
 import gui.util.ColorUtil;
 import gui.util.GUIUtil;
@@ -92,6 +94,26 @@ public class SpendPanel extends WorkingPanel {
 
     @Override
     public void updateData() {
+        SpendPage spend = new SpendService().getSpendPage();
+        vMonthSpend.setText(spend.monthSpend);
+        vTodaySpend.setText(spend.todaySpend);
+        vAvgSpendPerDay.setText(spend.avgSpendPerDay);
+        vMonthAvailable.setText(spend.monthAvailable);
+        vDayAvgAvailable.setText(spend.dayAvgAvailable);
+        vMonthLeftDay.setText(spend.monthLeftDay);
 
+        circleBar.setProgress(spend.usagePercentage);
+        if (spend.isOverSpend) {
+            vMonthAvailable.setForeground(ColorUtil.warningColor);
+            vMonthSpend.setForeground(ColorUtil.warningColor);
+            vTodaySpend.setForeground(ColorUtil.warningColor);
+
+        } else {
+            vMonthAvailable.setForeground(ColorUtil.grayColor);
+            vMonthSpend.setForeground(ColorUtil.blueColor);
+            vTodaySpend.setForeground(ColorUtil.blueColor);
+        }
+        circleBar.setForegroundColor(ColorUtil.getByPercentage(spend.usagePercentage));
+        addListener();
     }
 }

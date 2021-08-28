@@ -3,6 +3,7 @@ package gui.util;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.util.List;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -11,6 +12,7 @@ import javax.swing.JPanel;
 
 import com.objectplanet.chart.BarChart;
 import com.objectplanet.chart.Chart;
+import gui.entity.Record;
 
 public class ChartUtil {
 
@@ -34,9 +36,9 @@ public class ChartUtil {
         return sampleLabels;
     }
 
-    public static Image getImage(int width, int height) {
+    public static Image getImage(List<Record> rs,int width, int height) {
         // 模拟样本数据
-        double[] sampleValues = sampleValues();
+        double[] sampleValues = sampleValues(rs);
         // 下方显示的文字
         String[] sampleLabels = sampleLabels();
         // 样本中的最大值
@@ -86,24 +88,15 @@ public class ChartUtil {
         return im;
     }
 
-    private static double[] sampleValues() {
+    private static double[] sampleValues(List<Record> rs) {
 
-        double[] result = new double[30];
+        double[] result = new double[rs.size()];
         for (int i = 0; i < result.length; i++) {
-            result[i] = (int) (Math.random() * 300);
+            result[i] = rs.get(i).getSpend();
         }
         return result;
 
     }
 
-    public static void main(String[] args) {
-        JPanel p = new JPanel();
-        JLabel l = new JLabel();
-        Image img = ChartUtil.getImage(400, 300);
-        Icon icon = new ImageIcon(img);
-        l.setIcon(icon);
-        p.add(l);
-        GUIUtil.showPanel(p);
-    }
 
 }

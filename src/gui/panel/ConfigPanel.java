@@ -37,6 +37,7 @@ public class ConfigPanel extends WorkingPanel {
         this.setLayout(new BorderLayout());
         this.add(pInput,BorderLayout.NORTH);
         this.add(pBtn,BorderLayout.SOUTH);
+        addListener();
 
     }
 
