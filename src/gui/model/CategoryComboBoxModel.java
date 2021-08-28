@@ -21,7 +21,17 @@ public class CategoryComboBoxModel implements ComboBoxModel<Category> {
 
     @Override
     public void setSelectedItem(Object anItem) {
-        c = (Category) anItem;
+        if(anItem instanceof Integer) {
+            for(Category category : cs) {
+                if(category.getId() == (int)anItem){
+                    c = category;
+                    return;
+                }
+            }
+        } else {
+            c = (Category)anItem;
+        }
+
     }
 
     @Override

@@ -3,6 +3,7 @@ package gui.dao;
 import gui.entity.Record;
 import gui.util.DBUtil;
 import gui.util.DateUtil;
+import gui.util.GUIUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class RecordDAO {
 
     public void update(Record record) {
 
-        String sql = "update record set spend= ?, category_id= ?, comment =?, date = ? where id = ?";
+        String sql = "update record set spend= ?, category_id= ?, comment =?, data = ? where id = ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
 
             ps.setInt(1, record.getSpend());
@@ -145,7 +146,62 @@ public class RecordDAO {
                 record.setId(id);
                 record.setComment(comment);
                 record.setDate(date);
+                record.setCategoryId(category_id);
+                records.add(record);
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+        return records;
+    }
+    public List<Record> listByConditon(Record qryRecord){
+        List<Record> records = new ArrayList<Record>();
+        StringBuffer sql = new StringBuffer("select * from record where 1 = 1");
+        if(qryRecord.getId() != 0){
+            sql.append(" and id = "+qryRecord.getId());
+        }
+        if(qryRecord.getCategoryId() != 0){
+            sql.append(" and category_id = "+qryRecord.getCategoryId());
+        }
+        if(qryRecord.getComment() != null && !"".equals(qryRecord.getComment())){
+            sql.append(" and comment like '%"+qryRecord.getComment()).append("%'");
+        }
+        if(qryRecord.getStartDate() != null) {
+            sql.append(" and data >= ?");
+        }
+        if(qryRecord.getEndDate() != null) {
+            sql.append(" and data <= ?");
+        }
+
+        try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql.toString());) {
+
+            if(qryRecord.getStartDate() != null && qryRecord.getEndDate() != null) {
+                ps.setDate(1, DateUtil.util2sql(qryRecord.getStartDate()));
+                ps.setDate(2, DateUtil.util2sql(qryRecord.getEndDate()));
+            } else if(qryRecord.getEndDate() != null) {
+                ps.setDate(1, DateUtil.util2sql(qryRecord.getStartDate()));
+            } else if(qryRecord.getStartDate() != null) {
+                ps.setDate(1, DateUtil.util2sql(qryRecord.getEndDate()));
+            }
+
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Record record = new Record();
+                int id = rs.getInt("id");
+                int spend = rs.getInt("spend");
+                int category_id = rs.getInt("category_id");
+
+                String comment = rs.getString("comment");
+                Date date = rs.getDate("data");
+
+                record.setSpend(spend);
                 record.setId(id);
+                record.setComment(comment);
+                record.setDate(date);
+                record.setCategoryId(category_id);
                 records.add(record);
             }
         } catch (SQLException e) {
@@ -246,7 +302,7 @@ public class RecordDAO {
                 record.setId(id);
                 record.setComment(comment);
                 record.setDate(date);
-                record.setId(id);
+                record.setCategoryId(category_id);
                 records.add(record);
             }
         } catch (SQLException e) {

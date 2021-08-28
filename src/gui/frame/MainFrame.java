@@ -1,7 +1,6 @@
 package gui.frame;
 
 import gui.panel.MainPanel;
-import gui.util.GUIUtil;
 
 import javax.swing.*;
 

@@ -16,6 +16,7 @@ public class MainPanel extends JPanel {
     public JButton bSpend = new JButton();
     public JButton bRecord = new JButton();
     public JButton bCategory = new JButton();
+    public JButton bRecordDetail = new JButton();
     public JButton bReport = new JButton();
     public JButton bConfig = new JButton();
     public JButton bBackup = new JButton();
@@ -26,6 +27,7 @@ public class MainPanel extends JPanel {
         GUIUtil.setImageIcon(bSpend, "home.png", "消费一览");
         GUIUtil.setImageIcon(bRecord, "record.png", "记一笔");
         GUIUtil.setImageIcon(bCategory, "category2.png", "消费分类");
+        GUIUtil.setImageIcon(bRecordDetail, "category1.png", "消费详情");
         GUIUtil.setImageIcon(bReport, "report.png", "月消费报表");
         GUIUtil.setImageIcon(bConfig, "config.png", "设置");
         GUIUtil.setImageIcon(bBackup, "backup.png", "备份");
@@ -33,6 +35,7 @@ public class MainPanel extends JPanel {
         tb.add(bSpend);
         tb.add(bRecord);
         tb.add(bCategory);
+        tb.add(bRecordDetail);
         tb.add(bReport);
         tb.add(bConfig);
         tb.add(bBackup);
@@ -56,6 +59,7 @@ public class MainPanel extends JPanel {
         bConfig.addActionListener(toolBarListener);
         bBackup.addActionListener(toolBarListener);
         bRecover.addActionListener(toolBarListener);
+        bRecordDetail.addActionListener(toolBarListener);
     }
 
     public static void main(String[] args) {

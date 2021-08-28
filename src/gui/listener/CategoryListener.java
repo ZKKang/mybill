@@ -1,13 +1,13 @@
 package gui.listener;
 
-import gui.dialog.RecordDetailDialog;
+import gui.dialog.MainDialog;
 import gui.entity.Category;
-import gui.model.RecordTableModel;
 import gui.panel.CategoryPanel;
+import gui.panel.RecordDetailPanel;
 import gui.service.CategoryService;
+import gui.service.RecordService;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -54,8 +54,13 @@ public class CategoryListener implements ActionListener {
                 JOptionPane.showMessageDialog(categoryPanel, "本分类下无消费记录存在");
                 return;
             }
-            RecordDetailDialog.instance.updateDate();
-            RecordDetailDialog.instance.setVisible(true);
+            RecordDetailPanel recordDetailPanel = RecordDetailPanel.instance;
+            Category category = categoryPanel.getSelectedCategory();
+            recordDetailPanel.recordTableModel.records = new RecordService().listByCategoryId(category);
+            recordDetailPanel.bEdit.setEnabled(false);
+            MainDialog.instance.addPanel(recordDetailPanel);
+
+            MainDialog.instance.setVisible(true);
 
         }
         categoryPanel.updateData();

@@ -15,14 +15,12 @@ import java.util.List;
 public class RecordTableModel implements TableModel {
 
     String[] columnNames = new String[]{"编号","消费金额","消费类型","备注","消费日期"};
-    public List<Category> categories = new ArrayList<>();
     public List<Record> records = new ArrayList<>();
     public Category category= null;
 
     public RecordTableModel() {
-        categories = new CategoryService().list();
-        category = CategoryPanel.instance.getSelectedCategory();
-        records = new RecordService().listByCategoryId(category);
+//        category = CategoryPanel.instance.getSelectedCategory();
+        records = new RecordService().list();
     }
 
     @Override
@@ -56,7 +54,7 @@ public class RecordTableModel implements TableModel {
         switch (columnIndex) {
             case 0 : return record.getId();
             case 1 : return record.getSpend();
-            case 2 : return category.getName();
+            case 2 : return record.getCategoryName();
             case 3 : return record.getComment();
             case 4 : return record.getDate();
             default : return null;

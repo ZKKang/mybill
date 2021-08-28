@@ -24,11 +24,10 @@ public class RecordPanel extends WorkingPanel {
 
     public JTextField tfSpend = new JTextField("0");
     public CategoryComboBoxModel cbModel = new CategoryComboBoxModel();
-
     public JComboBox<Category> cbCategory = new JComboBox<>(cbModel);
     public JTextField tfComment = new JTextField();
     public JXDatePicker datepick = new JXDatePicker(new Date());
-
+    public int id = -1;
     public JButton bSubmit = new JButton("记一笔");
 
 
