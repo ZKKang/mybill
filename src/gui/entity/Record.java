@@ -6,6 +6,7 @@ public class Record {
     private int id;
     private int spend;
     private int categoryId;
+    private String categoryName;
     private String comment;
     private Date date;
 
@@ -47,5 +48,13 @@ public class Record {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }

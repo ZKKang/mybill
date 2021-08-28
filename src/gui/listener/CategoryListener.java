@@ -1,10 +1,13 @@
 package gui.listener;
 
+import gui.dialog.RecordDetailDialog;
 import gui.entity.Category;
+import gui.model.RecordTableModel;
 import gui.panel.CategoryPanel;
 import gui.service.CategoryService;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -44,6 +47,16 @@ public class CategoryListener implements ActionListener {
 
             int id = c.getId();
             new CategoryService().delete(id);
+        }
+        if (button == categoryPanel.bDetail) {
+            Category c = categoryPanel.getSelectedCategory();
+            if (0 == c.getRecordNumber()) {
+                JOptionPane.showMessageDialog(categoryPanel, "本分类下无消费记录存在");
+                return;
+            }
+            RecordDetailDialog.instance.updateDate();
+            RecordDetailDialog.instance.setVisible(true);
+
         }
         categoryPanel.updateData();
     }

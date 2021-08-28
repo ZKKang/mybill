@@ -17,6 +17,7 @@ public class CategoryPanel extends WorkingPanel {
 
     public static CategoryPanel instance = new CategoryPanel();
 
+    public JButton bDetail = new JButton("详情");
     public JButton bAdd = new JButton("新增");
     public JButton bEdit = new JButton("编辑");
     public JButton bDelete = new JButton("删除");
@@ -32,6 +33,7 @@ public class CategoryPanel extends WorkingPanel {
         JScrollPane tablePane = new JScrollPane(t);
         this.add(tablePane,BorderLayout.CENTER);
         JPanel btnPanel = new JPanel();
+        btnPanel.add(bDetail);
         btnPanel.add(bAdd);
         btnPanel.add(bEdit);
         btnPanel.add(bDelete);
@@ -46,6 +48,7 @@ public class CategoryPanel extends WorkingPanel {
         bAdd.addActionListener(categoryListener);
         bEdit.addActionListener(categoryListener);
         bDelete.addActionListener(categoryListener);
+        bDetail.addActionListener(categoryListener);
     }
 
     @Override
