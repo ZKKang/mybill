@@ -38,9 +38,13 @@ public class RecordDetailListener implements ActionListener {
             RecordPanel.instance.bSubmit.setText("修改");
             MainDialog.instance.addPanel(RecordPanel.instance);
             MainDialog.instance.setVisible(true);
+            List<Record> recordList = recordService.list(record);
+            detailPanel.recordTableModel.records = recordList;
         }else if(detailPanel.bDelete == button) {
             Record record = detailPanel.getSelectedRecord();
             recordService.delete(record);
+            List<Record> recordList =  recordService.list(record);
+            detailPanel.recordTableModel.records = recordList;
         }else if(detailPanel.bQueryAll == button) {
             List<Record> recordList =  recordService.list();
             detailPanel.recordTableModel.records = recordList;
