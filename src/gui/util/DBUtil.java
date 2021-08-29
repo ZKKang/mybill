@@ -1,28 +1,53 @@
 package gui.util;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class DBUtil {
 
-    static String ip = "127.0.0.1";
-    static int port = 3306;
-    static String database = "mybill";
-    static String encoding = "UTF-8";
-    static String loginName = "root";
-    static String password = "admin";
+    public static Properties properties= null;
+    static {
+        properties= new Properties();
+        try {
+            properties.load(DBUtil.class.getClassLoader().getResourceAsStream("db.property"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     static {
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName(getValue("driver"));
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         }
     }
 
+    public static String getValue(String key) {
+        if(properties.containsKey(key)){
+            return properties.getProperty(key);
+        }else
+            throw new KeyNotFoundException("未找到对应的key ："+key);
+    }
+
+
     public static Connection getConnection() throws SQLException{
-        String url = String.format("jdbc:mysql://127.0.0.1:3306/mybill?characterEncoding=UTF-8");
-        return DriverManager.getConnection(url,"root","admin");
+        String url = String.format("jdbc:mysql://%s:%s/%s?characterEncoding=%s", getValue("ip"), getValue("port"), getValue("database"), getValue("encoding"));
+        return DriverManager.getConnection(url,getValue("username"),getValue("password"));
+    }
+
+
+}
+class KeyNotFoundException extends RuntimeException {
+    public KeyNotFoundException() {
+        super();
+    }
+
+    public KeyNotFoundException(String message) {
+        super(message);
     }
 }

@@ -1,0 +1,7 @@
+driver=com.mysql.jdbc.Driver
+ip=127.0.0.1
+port=3306
+database=mybill
+encoding=UTF-8
+username=root
+password=admin

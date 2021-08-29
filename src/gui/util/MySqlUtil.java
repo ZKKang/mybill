@@ -4,18 +4,18 @@ import java.io.*;
 
 public class MySqlUtil {
     public static void backup(String mysqlPath, String backupfile) throws IOException {
-        String commandFormat = "\"%s/bin/mysqldump.exe\" -u%s -p%s   -hlocalhost   -P%d %s -r \"%s\"";
+        String commandFormat = "\"%s/bin/mysqldump.exe\" -u%s -p%s   -hlocalhost   -P%s %s -r \"%s\"";
 
-        String command = String.format(commandFormat, mysqlPath, DBUtil.loginName, DBUtil.password, DBUtil.port,
-                DBUtil.database, backupfile);
+        String command = String.format(commandFormat, mysqlPath, DBUtil.getValue("username"), DBUtil.getValue("password"), DBUtil.getValue("port"),
+                DBUtil.getValue("database"), backupfile);
         Runtime.getRuntime().exec(command);
     }
 
     public static void recover(String mysqlPath, String recoverfile) {
         try {
             String commandFormat = "\"%s/bin/mysql.exe\" -u%s -p%s   %s ";
-            String command = String.format(commandFormat, mysqlPath, DBUtil.loginName, DBUtil.password,
-                    DBUtil.database);
+            String command = String.format(commandFormat, mysqlPath, DBUtil.getValue("username"), DBUtil.getValue("password"),
+                    DBUtil.getValue("database"));
 
             Process p = Runtime.getRuntime().exec(command);
             OutputStream out = p.getOutputStream();
