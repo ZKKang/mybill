@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CategoryTableModel  implements TableModel {
 
-    String[] columnNames = new String[]{"分类名称","消费次数"};
+    String[] columnNames = new String[]{"分类名称","消费次数","总金额"};
     public List<Category> cs = new ArrayList<>();
 
     public CategoryTableModel() {
@@ -51,6 +51,9 @@ public class CategoryTableModel  implements TableModel {
         }
         if(columnIndex == 1) {
             return category.getRecordNumber();
+        }
+        if(columnIndex == 2) {
+            return category.getTotalMoney();
         }
         return null;
     }

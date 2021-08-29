@@ -14,9 +14,16 @@ public class CategoryService {
 
     public List<Category> list() {
         List<Category> cs= categoryDao.list();
+
         for (Category c : cs) {
             List<Record> rs =recordDao.list(c.getId());
             c.setRecordNumber(rs.size());
+            int totalMoney =0;
+            for(Record r : rs){
+                totalMoney+=r.getSpend();
+            }
+            c.setTotalMoney(totalMoney);
+
         }
         Collections.sort(cs,(c1, c2)->c2.getRecordNumber()-c1.getRecordNumber());
         return cs;
