@@ -50,6 +50,10 @@ public class RecordTableModel implements TableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        if(rowIndex>=records.size()) {
+            return null;
+        }
+
         Record record = records.get(rowIndex);
         switch (columnIndex) {
             case 0 : return record.getId();

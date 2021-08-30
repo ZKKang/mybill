@@ -22,7 +22,7 @@ public class ReportPanel extends WorkingPanel {
         this.setLayout(new BorderLayout());
         List<Record> rs = new ReportService().listThisMonthRecords();
 
-        Image image = ChartUtil.getImage(rs,350,230);
+        Image image = ChartUtil.getImage(rs,700,460);
         ImageIcon icon = new ImageIcon(image);
         l.setIcon(icon);
         this.add(l);

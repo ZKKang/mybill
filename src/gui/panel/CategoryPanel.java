@@ -7,6 +7,7 @@ import gui.model.CategoryTableModel;
 import gui.service.CategoryService;
 import gui.util.ColorUtil;
 import gui.util.GUIUtil;
+import org.jdesktop.swingx.JXTable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,7 +25,7 @@ public class CategoryPanel extends WorkingPanel {
     public JButton bDelete = new JButton("删除");
     
     public CategoryTableModel ctm = new CategoryTableModel();
-    public JHighDPITable t =new JHighDPITable(ctm);
+    public JXTable t =new JXTable(ctm);
 
     private CategoryPanel(){
         GUIUtil.setColor(ColorUtil.blueColor, bAdd,bEdit,bDelete);

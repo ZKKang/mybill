@@ -8,7 +8,7 @@ import java.util.Enumeration;
 public class GUIUtil {
     private static String imageFolder = "./img/";
     public static void setImageIcon(JButton b, String fileName, String tip) {
-        ImageIcon i = new ImageIcon(imageFolder+fileName);
+        ImageIcon i = new ImageIcon(GUIUtil.class.getClassLoader().getResource(fileName));
         b.setIcon(i);
         b.setPreferredSize(new Dimension(61, 81));
         b.setToolTipText(tip);

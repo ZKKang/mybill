@@ -9,6 +9,7 @@ import gui.model.RecordTableModel;
 import gui.service.RecordService;
 import gui.util.DateUtil;
 import org.jdesktop.swingx.JXDatePicker;
+import org.jdesktop.swingx.JXTable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +20,7 @@ public class RecordDetailPanel extends WorkingPanel {
     public static RecordDetailPanel instance = new RecordDetailPanel();
 
     public RecordTableModel recordTableModel = new RecordTableModel();
-    public JHighDPITable jTable = new JHighDPITable(recordTableModel);
+    public JXTable jTable = new JXTable(recordTableModel);
 
     public JButton bQuery = new JButton("查询");
     public JButton bEdit = new JButton("修改");
