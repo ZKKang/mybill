@@ -71,6 +71,6 @@ public class RecordPanel extends WorkingPanel {
     @Override
     public void updateData() {
         cbModel.cs = new CategoryService().list();
-        datepick.updateUI();
+        cbCategory.updateUI();
     }
 }
