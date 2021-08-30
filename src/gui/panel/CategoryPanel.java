@@ -1,5 +1,6 @@
 package gui.panel;
 
+import com.sun.deploy.panel.JHighDPITable;
 import gui.entity.Category;
 import gui.listener.CategoryListener;
 import gui.model.CategoryTableModel;
@@ -23,7 +24,7 @@ public class CategoryPanel extends WorkingPanel {
     public JButton bDelete = new JButton("删除");
     
     public CategoryTableModel ctm = new CategoryTableModel();
-    public JTable t =new JTable(ctm);
+    public JHighDPITable t =new JHighDPITable(ctm);
 
     private CategoryPanel(){
         GUIUtil.setColor(ColorUtil.blueColor, bAdd,bEdit,bDelete);

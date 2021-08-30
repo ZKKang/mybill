@@ -49,7 +49,6 @@ public class RecordPanel extends WorkingPanel {
         pInput.add(lDate);
         pInput.add(datepick);
 
-
         pSubmit.add(bSubmit);
 
         this.setLayout(new BorderLayout());

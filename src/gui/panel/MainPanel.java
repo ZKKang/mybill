@@ -43,7 +43,7 @@ public class MainPanel extends JPanel {
         tb.setFloatable(false);
         setLayout(new BorderLayout());
         add(tb, BorderLayout.NORTH);
-        workingPanel = new CenterPanel(0.8);
+        workingPanel = new CenterPanel(0.9);
         add(workingPanel,BorderLayout.CENTER);
 
         addListener();

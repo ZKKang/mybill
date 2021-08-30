@@ -1,5 +1,6 @@
 package gui.panel;
 
+import com.sun.deploy.panel.JHighDPITable;
 import gui.entity.Category;
 import gui.entity.Record;
 import gui.listener.RecordDetailListener;
@@ -18,7 +19,7 @@ public class RecordDetailPanel extends WorkingPanel {
     public static RecordDetailPanel instance = new RecordDetailPanel();
 
     public RecordTableModel recordTableModel = new RecordTableModel();
-    public JTable jTable = new JTable(recordTableModel);
+    public JHighDPITable jTable = new JHighDPITable(recordTableModel);
 
     public JButton bQuery = new JButton("查询");
     public JButton bEdit = new JButton("修改");

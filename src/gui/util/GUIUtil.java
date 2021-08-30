@@ -1,7 +1,9 @@
 package gui.util;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
 import java.awt.*;
+import java.util.Enumeration;
 
 public class GUIUtil {
     private static String imageFolder = "./img/";
@@ -85,5 +87,17 @@ public class GUIUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void initGlobalFont(Font font) {
+        FontUIResource fontRes = new FontUIResource(font);
+        for(Enumeration<Object> keys = UIManager.getDefaults().keys();keys.hasMoreElements();) {
+            Object key = keys.nextElement();
+            Object value = UIManager.get(key);
+            if(value instanceof FontUIResource) {
+                UIManager.put(key,fontRes);
+            }
+        }
+
     }
 }
