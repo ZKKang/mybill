@@ -17,10 +17,10 @@ public class RecordListener implements ActionListener {
         String spend = recordPanel.tfSpend.getText();
         if(GUIUtil.checkZero(recordPanel.tfSpend,"消费金额")){
             if(recordPanel.id == -1){
-                recordService.add(Integer.valueOf(spend),(Category) recordPanel.cbCategory.getSelectedItem(),recordPanel.tfComment.getText(),recordPanel.datepick.getDate());
+                recordService.add(Double.valueOf(spend),(Category) recordPanel.cbCategory.getSelectedItem(),recordPanel.tfComment.getText(),recordPanel.datepick.getDate());
                 JOptionPane.showMessageDialog(recordPanel,"记录成功");
             } else {
-                recordService.update(recordPanel.id,Integer.valueOf(spend),(Category) recordPanel.cbCategory.getSelectedItem(),recordPanel.tfComment.getText(),recordPanel.datepick.getDate());
+                recordService.update(recordPanel.id,Double.valueOf(spend),(Category) recordPanel.cbCategory.getSelectedItem(),recordPanel.tfComment.getText(),recordPanel.datepick.getDate());
                 JOptionPane.showMessageDialog(recordPanel,"修改成功");
             }
             recordPanel.tfSpend.setText("");

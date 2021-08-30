@@ -13,7 +13,7 @@ import java.util.Map;
 public class RecordService {
     RecordDAO recordDao = new RecordDAO();
     CategoryDAO categoryDAO = new CategoryDAO();
-    public void add(int spend, Category c, String comment, Date date){
+    public void add(double spend, Category c, String comment, Date date){
         Record r = new Record();
         r.setSpend(spend);
         r.setCategoryId(c.getId());
@@ -61,7 +61,7 @@ public class RecordService {
         recordDao.delete(record.getId());
     }
 
-    public void update(int id,int spend, Category c, String comment, Date date){
+    public void update(int id, double spend, Category c, String comment, Date date){
         Record r = new Record();
         r.setId(id);
         r.setSpend(spend);

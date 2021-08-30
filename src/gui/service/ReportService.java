@@ -17,8 +17,8 @@ public class ReportService {
      * @param monthRawData
      * @return
      */
-    public int getDaySpend(Date d, List<Record> monthRawData){
-        int daySpend = 0;
+    public double getDaySpend(Date d, List<Record> monthRawData){
+        double daySpend = 0;
         for (Record record : monthRawData) {
             if(record.getDate().equals(d))
                 daySpend+=record.getSpend();
@@ -42,7 +42,7 @@ public class ReportService {
             c.setTime(monthBegin);
             c.add(Calendar.DATE, i);
             Date eachDayOfThisMonth=c.getTime() ;
-            int daySpend = getDaySpend(eachDayOfThisMonth,monthRawData);
+            double daySpend = getDaySpend(eachDayOfThisMonth,monthRawData);
             r.setSpend(daySpend);
             result.add(r);
         }

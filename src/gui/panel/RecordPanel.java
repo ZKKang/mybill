@@ -3,6 +3,7 @@ package gui.panel;
 import gui.entity.Category;
 import gui.listener.RecordListener;
 import gui.model.CategoryComboBoxModel;
+import gui.service.CategoryService;
 import gui.util.ColorUtil;
 import gui.util.GUIUtil;
 import org.jdesktop.swingx.JXDatePicker;
@@ -70,6 +71,7 @@ public class RecordPanel extends WorkingPanel {
 
     @Override
     public void updateData() {
-
+        cbModel.cs = new CategoryService().list();
+        datepick.updateUI();
     }
 }

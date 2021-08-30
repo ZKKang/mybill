@@ -39,7 +39,7 @@ public class ConfigService {
         dao.update(config);
     }
 
-    public int getIntBudget() {
-        return Integer.parseInt(get(budget));
+    public double getIntBudget() {
+        return Double.parseDouble(get(budget));
     }
 }

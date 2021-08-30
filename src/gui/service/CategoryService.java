@@ -18,7 +18,7 @@ public class CategoryService {
         for (Category c : cs) {
             List<Record> rs =recordDao.list(c.getId());
             c.setRecordNumber(rs.size());
-            int totalMoney =0;
+            double totalMoney =0;
             for(Record r : rs){
                 totalMoney+=r.getSpend();
             }

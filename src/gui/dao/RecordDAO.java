@@ -35,7 +35,7 @@ public class RecordDAO {
 
         String sql = "insert into record values(null,?,?,?,?)";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
-            ps.setInt(1, record.getSpend());
+            ps.setDouble(1, record.getSpend());
             ps.setInt(2, record.getCategoryId());
             ps.setString(3, record.getComment());
             ps.setDate(4, DateUtil.util2sql(record.getDate()));
@@ -55,10 +55,10 @@ public class RecordDAO {
 
     public void update(Record record) {
 
-        String sql = "update record set spend= ?, category_id= ?, comment =?, data = ? where id = ?";
+        String sql = "update record set spend= ?, category_id= ?, comment =?, date = ? where id = ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
 
-            ps.setInt(1, record.getSpend());
+            ps.setDouble(1, record.getSpend());
             ps.setInt(2, record.getCategoryId());
             ps.setString(3, record.getComment());
             ps.setDate(4, DateUtil.util2sql(record.getDate()));
@@ -98,10 +98,10 @@ public class RecordDAO {
 
             if (rs.next()) {
                 record = new Record();
-                int spend = rs.getInt("spend");
+                double spend = rs.getDouble("spend");
                 int category_id = rs.getInt("category_id");
                 String comment = rs.getString("comment");
-                Date date = rs.getDate("data");
+                Date date = rs.getDate("date");
 
                 record.setSpend(spend);
                 record.setId(id);
@@ -136,11 +136,11 @@ public class RecordDAO {
             while (rs.next()) {
                 Record record = new Record();
                 int id = rs.getInt("id");
-                int spend = rs.getInt("spend");
+                double spend = rs.getDouble("spend");
                 int category_id = rs.getInt("category_id");
 
                 String comment = rs.getString("comment");
-                Date date = rs.getDate("data");
+                Date date = rs.getDate("date");
 
                 record.setSpend(spend);
                 record.setId(id);
@@ -168,10 +168,10 @@ public class RecordDAO {
             sql.append(" and comment like '%"+qryRecord.getComment()).append("%'");
         }
         if(qryRecord.getStartDate() != null) {
-            sql.append(" and data >= ?");
+            sql.append(" and date >= ?");
         }
         if(qryRecord.getEndDate() != null) {
-            sql.append(" and data <= ?");
+            sql.append(" and date <= ?");
         }
 
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql.toString());) {
@@ -191,11 +191,11 @@ public class RecordDAO {
             while (rs.next()) {
                 Record record = new Record();
                 int id = rs.getInt("id");
-                int spend = rs.getInt("spend");
+                double spend = rs.getDouble("spend");
                 int category_id = rs.getInt("category_id");
 
                 String comment = rs.getString("comment");
-                Date date = rs.getDate("data");
+                Date date = rs.getDate("date");
 
                 record.setSpend(spend);
                 record.setId(id);
@@ -225,10 +225,10 @@ public class RecordDAO {
             while (rs.next()) {
                 Record record = new Record();
                 int id = rs.getInt("id");
-                int spend = rs.getInt("spend");
+                double spend = rs.getDouble("spend");
 
                 String comment = rs.getString("comment");
-                Date date = rs.getDate("data");
+                Date date = rs.getDate("date");
 
                 record.setSpend(spend);
                 record.setId(id);
@@ -250,7 +250,7 @@ public class RecordDAO {
 
     public List<Record> list(Date day) {
         List<Record> records = new ArrayList<Record>();
-        String sql = "select * from record where data =?";
+        String sql = "select * from record where date =?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
             ps.setDate(1, DateUtil.util2sql(day));
 
@@ -259,10 +259,10 @@ public class RecordDAO {
                 Record record = new Record();
                 int id = rs.getInt("id");
                 int category_id = rs.getInt("category_id");
-                int spend = rs.getInt("spend");
+                double spend = rs.getDouble("spend");
 
                 String comment = rs.getString("comment");
-                Date date = rs.getDate("data");
+                Date date = rs.getDate("date");
 
                 record.setSpend(spend);
                 record.setId(id);
@@ -284,7 +284,7 @@ public class RecordDAO {
 
     public List<Record> list(Date start, Date end) {
         List<Record> records = new ArrayList<Record>();
-        String sql = "select * from record where data >=? and data <= ?";
+        String sql = "select * from record where date >=? and date <= ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
             ps.setDate(1, DateUtil.util2sql(start));
             ps.setDate(2, DateUtil.util2sql(end));
@@ -293,10 +293,10 @@ public class RecordDAO {
                 Record record = new Record();
                 int id = rs.getInt("id");
                 int category_id = rs.getInt("category_id");
-                int spend = rs.getInt("spend");
+                double spend = rs.getDouble("spend");
 
                 String comment = rs.getString("comment");
-                Date date = rs.getDate("data");
+                Date date = rs.getDate("date");
 
                 record.setSpend(spend);
                 record.setId(id);

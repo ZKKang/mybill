@@ -4,7 +4,7 @@ public class Category {
     private int id;
     private String name;
     private int recordNumber;
-    private int totalMoney;
+    private double totalMoney;
 
     public int getId() {
         return id;
@@ -34,11 +34,11 @@ public class Category {
         this.recordNumber = recordNumber;
     }
 
-    public int getTotalMoney() {
+    public double getTotalMoney() {
         return totalMoney;
     }
 
-    public void setTotalMoney(int totalMoney) {
+    public void setTotalMoney(double totalMoney) {
         this.totalMoney = totalMoney;
     }
 }

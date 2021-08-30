@@ -66,7 +66,7 @@ public class RecordTableModel implements TableModel {
         Record record = records.get(rowIndex);
         switch (columnIndex) {
             case 0 : record.setId((int)aValue);
-            case 1 : record.setSpend((int)aValue);
+            case 1 : record.setSpend((double)aValue);
             case 2 : record.setCategoryName((String)aValue);
             case 3 : record.setComment((String)aValue);
             case 4 : ;

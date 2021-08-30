@@ -1,6 +1,5 @@
 package test;
 
-import gui.panel.MainPanel;
 import gui.util.GUIUtil;
 
 import javax.swing.*;

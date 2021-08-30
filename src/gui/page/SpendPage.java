@@ -18,7 +18,7 @@ public class SpendPage {
     //是否超支
     public boolean isOverSpend = false;
 
-    public SpendPage(int monthSpend, int todaySpend, int avgSpendPerDay, int monthAvailable, int dayAvgAvailable,
+    public SpendPage(double monthSpend, double todaySpend, double avgSpendPerDay, double monthAvailable, double dayAvgAvailable,
                      int monthLeftDay, int usagePercentage) {
         this.monthSpend = "￥" + monthSpend;
         this.todaySpend = "￥" + todaySpend;

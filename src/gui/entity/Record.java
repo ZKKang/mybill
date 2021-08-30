@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Record {
     private int id;
-    private int spend;
+    private double spend;
     private int categoryId;
     private String categoryName;
     private String comment;
@@ -36,11 +36,11 @@ public class Record {
         this.id = id;
     }
 
-    public int getSpend() {
+    public double getSpend() {
         return spend;
     }
 
-    public void setSpend(int spend) {
+    public void setSpend(double spend) {
         this.spend = spend;
     }
 

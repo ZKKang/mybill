@@ -17,16 +17,16 @@ public class SpendService {
         // 本月总天数
         int thisMonthTotalDay = DateUtil.thisMonthTotalDay();
 
-        int monthSpend = 0;
-        int todaySpend = 0;
-        int avgSpendPerDay = 0;
-        int monthAvailable = 0;
-        int dayAvgAvailable = 0;
+        double monthSpend = 0;
+        double todaySpend = 0;
+        double avgSpendPerDay = 0;
+        double monthAvailable = 0;
+        double dayAvgAvailable = 0;
         int monthLeftDay = 0;
         int usagePercentage = 0;
 
         // 预算
-        int monthBudget = new ConfigService().getIntBudget();
+        double monthBudget = new ConfigService().getIntBudget();
 
         // 统计本月消费
         for (Record record : thisMonthRecords) {
@@ -38,7 +38,7 @@ public class SpendService {
             todaySpend += record.getSpend();
         }
         // 计算日均消费
-        avgSpendPerDay = monthSpend / thisMonthTotalDay;
+        avgSpendPerDay = (double)Math.round((monthSpend / thisMonthTotalDay)*100)/100;
         // 计算本月剩余
         monthAvailable = monthBudget - monthSpend;
 
@@ -46,10 +46,10 @@ public class SpendService {
         monthLeftDay = DateUtil.thisMonthLeftDay();
 
         // 计算日均可用
-        dayAvgAvailable = monthAvailable / monthLeftDay;
+        dayAvgAvailable = (double)Math.round((monthAvailable / monthLeftDay)*100)/100;
 
         // 计算使用比例
-        usagePercentage = monthSpend * 100 / monthBudget;
+        usagePercentage = new Double(monthSpend * 100/ monthBudget).intValue();
 
         // 根据这些信息，生成SpendPage对象
         return new SpendPage(monthSpend, todaySpend, avgSpendPerDay, monthAvailable, dayAvgAvailable, monthLeftDay,

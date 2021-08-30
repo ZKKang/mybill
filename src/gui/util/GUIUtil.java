@@ -42,10 +42,10 @@ public class GUIUtil {
             return false;
         String text = tf.getText().trim();
         try {
-            Integer.parseInt(text);
+            Double.parseDouble(text);
             return true;
         } catch (NumberFormatException e1) {
-            JOptionPane.showMessageDialog(null, input + " 需要是整数");
+            JOptionPane.showMessageDialog(null, input + " 需要是数字");
             tf.grabFocus();
             return false;
         }
@@ -56,7 +56,7 @@ public class GUIUtil {
             return false;
         String text = tf.getText().trim();
 
-        if (0 == Integer.parseInt(text)) {
+        if (0 == Double.parseDouble(text)) {
             JOptionPane.showMessageDialog(null, input + " 不能为零");
             tf.grabFocus();
             return false;
